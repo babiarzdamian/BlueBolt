@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<style>
+		html, body, iframe {
+			width: 100%;
+			height: 100%;
+			margin: 0px;
+			padding: 0px;
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body style="width: 100%; height: 100%; margin: 0px; padding: 0px;">
+</body>
+<script type='text/javascript'>
+window.onload = function() {
+	var params = (new URL(document.location)).searchParams;
+	var oobCode = params.get('oobCode');
+	var mode = params.get('mode');
+	var apiKey = 'AIzaSyCIE-MGpouMMakc8Hibva_i0Pvh9kZG7ig';
+
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://blue-bolt-cloud.firebaseapp.com/__/auth/action?mode='+mode+'&oobCode='+oobCode+'&apiKey='+apiKey;
+	iframe.frameBorder = 0;
+    document.body.appendChild(iframe);
+};
+</script>
+</html>

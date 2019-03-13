@@ -1,0 +1,312 @@
+<?php
+if(empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "off"){
+    $redirect = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    header('HTTP/1.1 301 Moved Permanently');
+    header('Location: ' . $redirect);
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blue Bolt</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="animate.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="owl.carousel.css">
+    <link rel="stylesheet" href="owl.carousel.min.css">
+    <link rel="stylesheet" href="owl.theme.default.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/fc8d08ed07.js"></script>
+    <script src="./js/owl.carousel.js"></script>
+    <script src="./js/scripts.js"></script>
+    <script>
+        function submitEmail() {
+
+            var name = $('#name').val();
+            var email = $('#emailText').val();
+            var location = $('#location').val();
+            var agreement = $('#agreement').val();
+            console.log(agreement);
+            jQuery.post('./php/sendemail.php', {
+                email: email,
+                name: name,
+                location: location,
+                agreement: agreement
+            },function(data){
+                $('#submissionResponse').html(data);
+            });
+            $(':input')
+            .not(':button, :submit, :reset, :hidden')
+            .val('');
+
+        }
+    </script>
+</head>
+<body id="top">
+    <div class="container-fluid">
+        <div id="main-slider" class="row section">
+            <nav class="navbar navbar-fixed-top">
+                <div id="menu-toggle" class="visible-xs">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+					<img src="images/bb-ntt-logo-mobile.svg" alt="Blue Bolt by NTT logo" class="logo logo-svg-mobile">
+                </div>
+                <div id="main-menu" class="hidden-xs">
+					<img src="images/logo.svg" alt="Blue Bolt by NTT logo" class="logo hidden-xs logo-svg">
+                    <ul>
+                        <li data-id="howitworks-section-title">How it works?</li>
+                        <li data-id="administrator-section">More than opening</li>
+                        <li data-id="slider-section">Innovation</li>
+                        <li data-id="safety-section-title">Is it safe?</li>
+                        <li class="white-btn" data-id="contact-section-text">Get a free quote</li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="container">
+                    <div class="col-sm-6 col-md-8 col-lg-8 main-slider-text animated fadeInDown">
+                        <h2>Complex PropTech solution</h2>
+                        <h3>smart access, communication,<br>
+                        energy savings, analytics and much more</h3>
+                    </div>
+            </div>
+            <img class="image-banner animated delayed fadeInDown" src="images/PropTech-solution.png" alt="hiGRUPA" srcset="images/PropTech-solution.svg" alt="Blue Bolt">
+        </div>
+        <div class="slider-section-after row section text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 main-slider-button">
+                        <div class="nav-down-wrapper magenta-btn circle-btn">
+                            <a class="nav-down">
+                                <span class="arrow-down"></span>
+                                <span class="arrow-down"></span>
+                                <span class="arrow-down"></span> 
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ########### ANIMATIONS SECTION ########### -->
+
+        <div id="animation-section" class="row section text-center">
+            <div  class="container">
+
+                    <div class="animated hidden-xs">
+                        <img src="images/gif-001-v4-alpha.gif" alt="">
+                    </div>
+                    <div class="animated visible-xs">
+                        <img src="images/gif-MOBILE.png" alt="">
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-12">
+                        <div class="nav-down-wrapper first-btn white-btn circle-btn">
+                            <a class="nav-down">
+                                <span class="arrow-down"></span>
+                                <span class="arrow-down"></span>
+                                <span class="arrow-down"></span> 
+                            </a>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <!-- ########### HOW-IT-WORKS SECTION ########### -->
+
+        <div id="howitworks-section" class="row section text-center">
+            <div class="container">
+
+                <h2 id="howitworks-section-title" class="animated">How it works?</h2>
+                <img class="animated" src="images/howitworks.png" alt="">
+                <div class="clearfix"></div>
+                <div class="animated">
+                    <p class="circle-number">1</p>
+                    <h3>Administrator sets the zones and users. </h3>
+                    <p>The user receives an email with link or scans a QR code or types the code manually. </p>
+                </div>
+                <div class="animated">
+                <p class="circle-number">2</p>
+                <h3>The card is not needed anymore.</h3>
+                <p>From now on, just approach the door or gate and your phone opens it. </p>
+                </div>
+            </div>
+        </div>
+
+    <!-- ########### BANNER SECTION ########### -->
+
+        <div id="banner-section" class="row section text-center">
+            <div  class="container">
+                <h3 class="animated">You can use it in <strong>ANY building:</strong><br>
+                brand new, old, residential, office, co-working space</h3>
+                <h2 class="animated">But wait… Smart access is just the beginning</h2>
+            </div>
+        </div>
+        <div class="banner-section-after row section text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="nav-down-wrapper second-btn white-btn circle-btn">
+                            <a class="nav-down" href="#banner">
+                                <span class="arrow-down"></span>
+                                <span class="arrow-down"></span>
+                                <span class="arrow-down"></span> 
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ########### ADMINISTRATOR SECTION ########### -->
+
+        <div id="administrator-section" class="row section text-center">
+            <div  class="container">
+                <div class="mobile-slider owl-carousel owl-theme">
+                    <div class="animated item col-sm-4 text-center">
+                        <img src="./images/ico-copy-3.svg">
+                        <h4>Providing guests access</h4>
+                        <p>Just a few clicks to invite a guest to the right room or garage at a specific time</p>
+                    </div>
+                    <div class="animated item col-sm-4 text-center">
+                        <img src="./images/ico-copy-2.svg">
+                        <h4>Effective communication</h4>
+                        <p>You will be able to send out push notifications directly to the users.<br>All, groups, or selected people.</p>
+                    </div>
+                    <div class="animated item col-sm-4 text-center">
+                        <img src="./images/ico-copy.svg">
+                        <h4>3rd party systems integration.</h4>
+                        <p> 
+                            • Recognition of car license plates<br>
+                            • Optimization of energy consumption <br>
+                            • Air quality inside and outside the building and much more
+                        </p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+<!-- ########### SLIDER SECTION ########### -->
+        
+        <div id="slider-section" class="row section">
+            <div class="container">
+                <div class="row">
+                    <h2 class="animated">How to <span class="magenta-bg">increase profits</span> with Blue Bolt?</h2>
+                    <div class="col-md-1 customNavigation hidden-sm hidden-xs">
+                        <a class="customPrevBtn"><img src="images/prev.svg" alt="&lt;"></a>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="owl-secondary owl-carousel owl-theme">
+                            <div class="item">
+                                <img src="./images/slider-energy-01.svg" alt="Ekologiczne zarządzanie">
+                                <h3>Energy optimization</h3>
+                                <p>Use our system to optimize the heating, ventilation, air conditioning and light.<br>
+<a href="#contact-section" title="Contact us">Contact us</a> to learn more.</p>
+                            </div>
+                            <div class="item">
+                                <img src="./images/slider-rosources-04.svg" alt="Nowoczesna przestrzeń">
+                                <h3>Optimal resources usage</h3>
+                                <p>You can monitor traffic in your office or co-working. <br>Learn the habits and needs of your users and adjust your space accordingly. <br>Quantity of staff members, opening hours, placement of vending machines <br>- optimize to make the most of your space</p>
+                            </div>
+                            <div class="item">
+                                <img src="./images/slider-add-03.svg" alt="Monitoruj statystyki">
+                                <h3>Add new products to your offer</h3>
+                                <p>Sell event tickets 100% automatically, via www.<br>
+Use the advertisement space in the app.</p>
+                            </div>
+                            <div class="item">
+                                <img src="./images/slider-integrate-02.svg" alt="Komunikacja">
+                                <h3>Integrate the team.</h3>
+                                <p>Our flexible mobile app can be used for communication,<br>
+social features integration and much more.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1 customNavigation hidden-sm hidden-xs">
+                        <a class="customNextBtn"><img src="images/next.svg" alt="&gt;"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- ########### SAFETY SECTION ########### -->
+
+        <div id="safety-section" class="row section">
+            <div class="container">
+
+                    <div class="hidden-sm col-md-6 image-wrapper">
+                        <img class="animated" alt="bezpieczeństwo systemu Blue Bolt" src="./images/safety-ico.svg">
+                    </div>
+                    <div class="col-sm-12 col-md-6 text-left text-wrapper-animation animated">
+                        <h2 id="safety-section-title" class="text-left">Is it safe?</h2>
+                        <div>
+                            <h3>High security level transmission</h3>
+                            <p>Bilateral encryption ensures very high security of the connection. No worries, that the data will be stolen, intercepted or other incidents will be happening. </p>
+                        </div>
+                        <div>
+                            <h3>Administrator and users control the access rights</h3>
+                            <p>Possible to define who has the right to invite guests and to which rooms, check the access history and conveniently managing the space. </p>
+                        </div>
+                        <a class="white-btn contact-btn animated fadeInDownButton">Get a free quote</a>
+                    </div>
+            </div>
+        </div>
+
+
+
+<!-- ########### CONTACT SECTION ########### -->
+
+        <div id="contact-section" class="row">
+            <div class="container">
+                <h2 id="contact-section-title">Check it out!<br>
+                Let us demonstrate what Blue Bolt may<br>give you and your property</h2>
+                <div class="desktop-middle">
+                    <label>
+                        <input id="name" type="text" name="name" placeholder="Your Name">
+                    </label>
+                    <label>
+                        <input id="emailText" type="text" name="email" placeholder="Your e-mail address">
+                    </label>
+                    <label>
+                        <input id="location" type="text" name="location" placeholder="Your location (eg: France, Paris)">
+                    </label>
+                    <label class="label-wrapper">I agree to get the feedback brief and offer
+                        <input id="agreement" name="agreement" type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>
+                        <input class="submit-btn" name="submit" type="submit" value="Submit" onclick="submitEmail();">
+                    </label>
+                </div>
+                <div id="submissionResponse" style="display: block; clear: both; text-align: center; color:white; padding-top:15px"></div>
+            </div>
+        </div>
+
+<!-- ########### FOOTER ########### -->
+
+
+        <div id="footer" class="row">
+            <div class="container">
+                <div class="social-media col-sm text-center">
+                    <a href="http://www.ntt.pl/index.php?c=1808&l=pl&" title="Strona producenta systemu"><img src="images/NTTsystem-LOGO.png" style="width: 70px; height: auto;" alt="NTT System"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="videoModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" id="videoFrame" src="https://www.youtube.com/embed/DaNT0awhvGg?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
